@@ -4,7 +4,7 @@ import numpy as np
 from gensim.models import KeyedVectors
 
 """
-Uasing word2vec model to illustrate linear algebra operations
+Using word2vec model to illustrate linear algebra operations
 on word vectors, such as computing similarity and inner products.
 """
 
