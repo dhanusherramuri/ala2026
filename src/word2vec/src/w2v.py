@@ -1,5 +1,6 @@
 from builtins import Exception
 import os
+import math
 import numpy as np
 from gensim.models import KeyedVectors
 
@@ -92,8 +93,19 @@ def test_most_similar(model, word:str):
     # can we find out if (king - man + woman = queen)?
     result = model.most_similar(positive=['king', 'woman'], negative=['man'], topn=1)
     # print(f"vector math: (king - man + woman) = {result[0][0]} (Confidence: {result[0][1]:.4f})")
+    # print(round(result[0][1],7))
+    print(result)
     assert result[0][0] == 'queen', "Most similar word computation failed."
 
+
+
+def norm_word(model, word) :
+    v = model[word]
+    sos = 0
+    for i in v :
+        sos += i**2
+    norm = math.sqrt(sos)
+    print(round(norm,7))
 
 if __name__ == "__main__":
     word2vec_model_path = "../glove50/glove_50_fast.wordvectors"
@@ -103,3 +115,4 @@ if __name__ == "__main__":
     test_similarity_same_word(model)
     test_inner_product(model)
     test_most_similar(model, "king")
+    norm_word(model,"was")

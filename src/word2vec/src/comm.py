@@ -1,19 +1,20 @@
 
-"""
+# """
+import os
 import gensim.downloader as api
-
+from gensim.models import KeyedVectors
 #
 model = api.load('glove-wiki-gigaword-50')
-model = api.load('glove-twitter-25')
+# model = api.load('glove-twitter-25')
 
 
 import os
-native_path = os.path.expanduser("~/Desktop/glove_50_fast.wordvectors")
+native_path = os.path.expanduser("D:/261100610017/ala2026/src/word2vec/glove50glove_50_fast.wordvectors")
 model.save(native_path)
-fast_model_path = os.path.expanduser("~/Desktop/glove_50_fast.wordvectors")
+fast_model_path = os.path.expanduser("D:/261100610017/ala2026/src/word2vec/glove50glove_50_fast.wordvectors")
 model = KeyedVectors.load(fast_model_path, mmap='r')
 model.similarity('university', 'professor')
-"""
+# """
 
 """
 fasttext-wiki-news-subwords-300 (~958 MB / 300 dimensions):
